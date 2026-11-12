@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoFix | Mantenimiento Automotriz</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Hoja de Estilos Personalizados (Después de Bootstrap para mantener tu diseño) -->
+    <link rel="stylesheet" href="./css/styles.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- SweetAlert2 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <div class="logo">Auto<span>Fix</span></div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#beneficios">Nosotros</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="nav-actions" id="nav-actions-container">
+                <a href="#" id="btn-login-nav" class="btn btn-outline">Iniciar Sesión</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- LANDING PAGE -->
+    <main>
+        <!-- Sección Hero -->
+        <section id="inicio" class="hero">
+            <div class="hero-content">
+                <h1>El cuidado experto que tu vehículo merece</h1>
+                <p>Mantenimiento preventivo y correctivo con altos estándares de calidad.</p>
+                <div class="hero-buttons">
+                    <a href="#" id="btn-solicitar-hero" class="btn btn-primary">Solicitar Mantenimiento</a>
+                    <a href="#servicios" class="btn btn-secondary">Conocer Servicios</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Servicios -->
+        <section id="servicios" class="container section-padding">
+            <div class="section-title"><h2>Nuestros Servicios</h2></div>
+            <div class="grid-cards">
+                <div class="card"><div class="card-icon">🛢️</div><h3>Cambio de Aceite</h3><p>Lubricación sintética de alto rendimiento.</p></div>
+                <div class="card"><div class="card-icon">🛑</div><h3>Revisión de Frenos</h3><p>Diagnóstico de pastillas y discos.</p></div>
+                <div class="card"><div class="card-icon">⚡</div><h3>Revisión Eléctrica</h3><p>Análisis computarizado integral.</p></div>
+            </div>
+        </section>
+
+        <!-- Sección Nosotros -->
+        <section id="beneficios" class="bg-light section-padding">
+            <div class="container">
+                <div class="section-title">
+                    <h2>¿Por qué elegirnos?</h2>
+                </div>
+                <div class="grid-cards">
+                    <div class="card transparent-card">
+                        <h3 class="text-accent">01.</h3>
+                        <h4>Transparencia total</h4>
+                        <p>Te mostramos exactamente qué necesita tu auto antes de realizar cualquier trabajo.</p>
+                    </div>
+                    <div class="card transparent-card">
+                        <h3 class="text-accent">02.</h3>
+                        <h4>Técnicos certificados</h4>
+                        <p>Nuestro equipo está en constante capacitación con las últimas tecnologías automotrices.</p>
+                    </div>
+                    <div class="card transparent-card">
+                        <h3 class="text-accent">03.</h3>
+                        <h4>Garantía de servicio</h4>
+                        <p>Todas nuestras reparaciones cuentan con garantía por escrito para tu tranquilidad.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- MÓDULO FORMULARIO DE MANTENIMIENTO -->
+    <section id="modulo-formulario" class="formulario-section" style="display: none;">
+        <div class="form-header">
+            <div class="form-header-top"><button id="btn-volver-inicio" class="btn btn-back">← Volver</button></div>
+            <h2>Solicitud de Mantenimiento</h2>
+            <p>Complete el formulario. Los campos con <span class="required">*</span> son obligatorios.</p>
+        </div>
+        <form id="form-mantenimiento" class="main-form">
+            <fieldset>
+                <legend>Datos del Cliente</legend>
+                <div class="form-grid">
+                    <div class="form-group"><label>Nombres <span class="required">*</span></label><input type="text" id="cliente-nombres" required></div>
+                    <div class="form-group"><label>Apellidos <span class="required">*</span></label><input type="text" id="cliente-apellidos" required></div>
+                    <div class="form-group"><label>Identificación (10 dígitos) <span class="required">*</span></label><input type="text" id="cliente-identificacion" maxlength="10" required></div>
+                    <div class="form-group"><label>Teléfono (10 dígitos) <span class="required">*</span></label><input type="tel" id="cliente-telefono" maxlength="10" required></div>
+                    <div class="form-group" style="grid-column: 1 / -1;"><label>Correo Electrónico <span class="required">*</span></label><input type="email" id="cliente-correo" required></div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Datos del Vehículo</legend>
+                <div class="form-grid">
+                    <div class="form-group"><label>Placa <span class="required">*</span></label><input type="text" id="auto-placa" placeholder="ABC-1234" required></div>
+                    <div class="form-group"><label>Marca <span class="required">*</span></label><input type="text" id="auto-marca" required></div>
+                    <div class="form-group"><label>Modelo <span class="required">*</span></label><input type="text" id="auto-modelo" required></div>
+                    <div class="form-group"><label>Año <span class="required">*</span></label><input type="number" id="auto-anio" required></div>
+                    <div class="form-group"><label>Color <span class="required">*</span></label><input type="text" id="auto-color" required></div>
+                    <div class="form-group"><label>Kilometraje <span class="required">*</span></label><input type="number" id="auto-kilometraje" required></div>
+                    <div class="form-group">
+                        <label>Combustible <span class="required">*</span></label>
+                        <select id="auto-combustible" required>
+                            <option value="">Seleccione...</option><option value="Gasolina">Gasolina</option><option value="Diesel">Diésel</option><option value="Electrico">Eléctrico</option>
+                        </select>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Detalles del Servicio</legend>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Tipo de Servicio <span class="required">*</span></label>
+                        <select id="mantenimiento-servicio" required>
+                            <option value="">Seleccione...</option><option value="Cambio de aceite">Cambio de aceite</option><option value="Revisión de frenos">Revisión de frenos</option><option value="Mantenimiento preventivo">Mantenimiento preventivo</option><option value="Diagnóstico general">Diagnóstico general</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><label>Fecha <span class="required">*</span></label><input type="date" id="mantenimiento-fecha" required></div>
+                    <div class="form-group"><label>Hora (08:00 - 17:00) <span class="required">*</span></label><input type="time" id="mantenimiento-hora" required></div>
+                    
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <label>Prioridad <span class="required">*</span></label>
+                        <div style="display: flex; gap: 20px; margin-top: 5px;">
+                            <label><input type="radio" name="prioridad" value="Baja"> Baja</label>
+                            <label><input type="radio" name="prioridad" value="Media" checked> Media</label>
+                            <label><input type="radio" name="prioridad" value="Alta"> Alta</label>
+                        </div>
+                    </div>
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <label>Servicios Adicionales (Opcional)</label>
+                        <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 8px;">
+                            <label style="cursor: pointer; font-weight: 400;">
+                                <input type="checkbox" name="servicios_adicionales" value="Lavado y Aspirado"> Lavado y Aspirado
+                            </label>
+                            <label style="cursor: pointer; font-weight: 400;">
+                                <input type="checkbox" name="servicios_adicionales" value="Alineación y Balanceo"> Alineación y Balanceo
+                            </label>
+                            <label style="cursor: pointer; font-weight: 400;">
+                                <input type="checkbox" name="servicios_adicionales" value="Revisión de Niveles"> Revisión de Niveles
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group" style="grid-column: 1 / -1;"><label>Descripción <span class="required">*</span></label><textarea id="mantenimiento-descripcion" rows="3" required></textarea></div>
+                </div>
+            </fieldset>
+            <div id="form-mensaje" class="alert" style="display: none;"></div>
+            <div class="form-actions"><button type="submit" class="btn btn-primary btn-large">Registrar Solicitud</button></div>
+        </form>
+    </section>
+
+    <!-- MÓDULO LOGIN Y REGISTRO -->
+    <section id="modulo-login" class="login-section" style="display: none;">
+        <div class="login-container">
+            
+            <!-- CAJA 1: INICIAR SESIÓN -->
+            <div id="box-login" class="login-card">
+                <div class="login-header">
+                    <h2>Iniciar Sesión</h2>
+                    <p>Ingresa tus credenciales para acceder</p>
+                </div>
+                <form id="form-login">
+                    <div class="form-group mb-3">
+                        <label>Usuario / Correo <span class="required">*</span></label>
+                        <input type="text" id="login-usuario" placeholder="Ej: user@correo.com" required style="width: 100%;">
+                    </div>
+                    <div class="form-group" style="margin-top: 10px;">
+                        <label>Contraseña <span class="required">*</span></label>
+                        <input type="password" id="login-password" placeholder="••••••••" required style="width: 100%;">
+                    </div>
+                    <div id="login-mensaje" class="alert" style="display: none;"></div>
+                    <div class="form-actions" style="margin-top: 25px;">
+                        <button type="submit" class="btn btn-primary btn-large">Acceder</button>
+                    </div>
+                </form>
+                <div style="text-align: center; margin-top: 20px;">
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">
+                        ¿No tienes cuenta? <a href="#" id="link-ir-registro" style="color: var(--accent-color); font-weight: 700; text-decoration: none;">Regístrate aquí</a>
+                    </p>
+                    <button id="btn-login-volver" class="btn btn-back" style="margin-top: 15px;">← Volver al Inicio</button>
+                </div>
+            </div>
+
+            <!-- CAJA 2: CREAR CUENTA NUEVA -->
+            <div id="box-registro" class="login-card" style="display: none;">
+                <div class="login-header">
+                    <h2>Crear Cuenta</h2>
+                    <p>Registra tus datos para solicitar mantenimientos</p>
+                </div>
+                <form id="form-registro">
+                    <div class="form-group">
+                        <label>Nombres <span class="required">*</span></label>
+                        <input type="text" id="reg-nombres" placeholder="Juan" required style="width: 100%;">
+                    </div>
+                    <div class="form-group" style="margin-top: 10px;">
+                        <label>Apellidos <span class="required">*</span></label>
+                        <input type="text" id="reg-apellidos" placeholder="Pérez" required style="width: 100%;">
+                    </div>
+                    <div class="form-group" style="margin-top: 10px;">
+                        <label>Cédula / Identificación <span class="required">*</span></label>
+                        <input type="text" id="reg-identificacion" maxlength="10" placeholder="10 dígitos" required style="width: 100%;">
+                    </div>
+                    <div class="form-group" style="margin-top: 10px;">
+                        <label>Teléfono <span class="required">*</span></label>
+                        <input type="tel" id="reg-telefono" maxlength="10" placeholder="09XXXXXXXX" required style="width: 100%;">
+                    </div>
+                    <div class="form-group" style="margin-top: 10px;">
+                        <label>Correo Electrónico <span class="required">*</span></label>
+                        <input type="email" id="reg-correo" placeholder="ejemplo@correo.com" required style="width: 100%;">
+                    </div>
+                    <div class="form-group" style="margin-top: 10px;">
+                        <label>Contraseña <span class="required">*</span></label>
+                        <input type="password" id="reg-password" placeholder="••••••••" required style="width: 100%;">
+                    </div>
+                    <div id="registro-mensaje" class="alert" style="display: none;"></div>
+                    <div class="form-actions" style="margin-top: 20px;">
+                        <button type="submit" class="btn btn-primary btn-large">Crear Mi Cuenta</button>
+                    </div>
+                </form>
+                <div style="text-align: center; margin-top: 20px;">
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">
+                        ¿Ya tienes cuenta? <a href="#" id="link-ir-login" style="color: var(--accent-color); font-weight: 700; text-decoration: none;">Inicia sesión</a>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- DASHBOARD ADMIN -->
+    <section id="modulo-admin" class="dashboard-section" style="display: none;">
+        <div class="dashboard-layout">
+            <aside class="sidebar">
+                <div class="sidebar-header"><h3>Panel Admin</h3></div>
+                <nav class="sidebar-menu">
+                    <ul><li class="active"><a href="#">📊 Resumen & CRUD</a></li></ul>
+                </nav>
+            </aside>
+            <main class="dashboard-content">
+                <header class="dashboard-header">
+                    <h2>Bienvenido, Administrador</h2>
+                    <div style="display: flex; gap: 15px; align-items: center;">
+                        <span class="user-badge badge-admin">Rol: ADMIN</span>
+                    </div>
+                </header>
+                
+                <div class="stats-grid">
+                    <div class="stat-card"><div class="stat-icon">👥</div><div class="stat-info"><h3 id="stat-clientes">0</h3><p>Clientes</p></div></div>
+                    <div class="stat-card"><div class="stat-icon">🚗</div><div class="stat-info"><h3 id="stat-vehiculos">0</h3><p>Vehículos</p></div></div>
+                    <div class="stat-card"><div class="stat-icon">📋</div><div class="stat-info"><h3 id="stat-mantenimientos">0</h3><p>Totales</p></div></div>
+                    <div class="stat-card"><div class="stat-icon">⏳</div><div class="stat-info"><h3 id="stat-pendientes">0</h3><p>Pendientes</p></div></div>
+                </div>
+
+                <div class="card" style="margin-top: 10px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 20px;">
+                        <h3 style="color: var(--primary-color);">Gestión de Solicitudes</h3>
+                        <div style="display: flex; gap: 10px;">
+                            <input type="text" id="admin-buscador" placeholder="Buscar placa o cliente..." style="padding: 8px 12px; font-size: 0.9rem; max-width: 200px;">
+                            <select id="admin-filtro-estado" style="padding: 8px 12px; font-size: 0.9rem;">
+                                <option value="TODOS">Todos los estados</option><option value="Pendiente">Pendiente</option><option value="En proceso">En proceso</option><option value="Finalizado">Finalizado</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead><tr><th>Código</th><th>Cliente</th><th>Vehículo</th><th>Servicio</th><th>Fecha y Hora</th><th>Estado</th><th style="text-align:center;">Acciones</th></tr></thead>
+                            <tbody id="admin-tabla-mantenimientos"><tr><td colspan="7" style="text-align: center; color: #64748B;">No hay registros.</td></tr></tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </section>
+
+    <!-- DASHBOARD CLIENTE -->
+    <section id="modulo-cliente" class="dashboard-section" style="display: none;">
+        <div class="container section-padding">
+            <header class="dashboard-header" style="margin-bottom: 30px;">
+                <div><h2 id="cliente-nombre-saludo">Bienvenido</h2><p>Consulta tus vehículos y mantenimientos.</p></div>
+                <div><span class="user-badge badge-user">Rol: CLIENTE</span></div>
+            </header>
+            <div class="grid-cards">
+                <div class="card"><h3>Mis Datos</h3><div id="cliente-info-personal" style="margin-top: 15px;"></div></div>
+                <div class="card" style="grid-column: span 2;"><h3>Mis Mantenimientos</h3><div id="cliente-lista-mantenimientos" style="margin-top: 15px;" class="table-container"></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER / CONTACTO -->
+    <footer id="contacto" class="footer">
+        <div class="container grid-footer">
+            <div class="footer-info">
+                <div class="logo">Auto<span>Fix</span></div>
+                <p>Tu taller mecánico de confianza. Pasión por los motores, compromiso con tu seguridad.</p>
+            </div>
+            <div class="footer-contact">
+                <h4>Contacto</h4>
+                <p>📍 Av. de la Prensa, Quito</p>
+                <p>📞 +593 987 654 321</p>
+                <p>✉️ info@autofix.com</p>
+            </div>
+            <div class="footer-hours">
+                <h4>Horarios</h4>
+                <p>Lunes - Viernes: 08:00 - 18:00</p>
+                <p>Sábados: 09:00 - 14:00</p>
+                <p>Domingos: Cerrado</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 AutoFix. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- BOTÓN FLOTANTE WHATSAPP -->
+    <a href="#" class="whatsapp-float" title="Contactar por WhatsApp">💬</a>
+    
+    <script type="module" src="./js/script.js"></script>
+</body>
+</html>
